@@ -27,17 +27,21 @@ export interface ImageCardProps extends Omit<CardProps, 'children'> {
 }
 
 export const ImageCard: React.FC<ImageCardProps> = ({ imageProps, children, sx, ...others }) => {
-  const { src, alt, width, height } = imageProps;
+  const { src, alt, width, height, className } = imageProps;
   const { classes } = useStyles();
 
   return (
-    <Box {...others} pos='relative' className={classes.root}>
+    <Box {...others} pos="relative" className={classes.root}>
       <Box bg={colors.dark[600]} className={classes.wrapper}>
-        <Image src={src} alt={alt} width={width} height={height} className={classes.image} />
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          className={className}
+        />
       </Box>
-      <Flex className={classes.content}>
-        {children}
-      </Flex>
+      <Flex className={classes.content}>{children}</Flex>
     </Box>
-  )
+  );
 };

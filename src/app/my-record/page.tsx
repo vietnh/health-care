@@ -1,19 +1,19 @@
 'use client';
 import { Flex } from '@mantine/core'
 import RecordCategories from '@/widgets/RecordCategories';
-import MyDiary from '@/widgets/MyDiary';
+import MyDiaries from '@/widgets/MyDiaries';
 import Inter from '@/components/Text/Inter';
-import MyExercise from '@/widgets/MyExercise';
+import MyExercises from '@/widgets/MyExercises';
 import MyBodyRecord from '@/widgets/MyBodyRecord';
 
-export default function Home() {
+export default function MyRecord() {
   return (
     <Flex direction='column' gap={56} px={160} py={56}>
       <RecordCategories />
       <MyBodyRecord />
-      <MyExercise />
+      <MyExercises />
       <Inter fz={22} fw={400}>MY DIARY</Inter>
-      <MyDiary />
+      <MyDiaries />
     </Flex>
   )
 }

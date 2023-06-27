@@ -10,7 +10,9 @@ const useStyles = createStyles((theme, color: string | undefined) => ({
   }
 }));
 
-const SmallButton: React.FC<ButtonProps> = ({ children, color, ...props }) => {
+const SmallButton: React.FC<
+  import("@mantine/utils").PolymorphicComponentProps<"button", ButtonProps>
+> = ({ children, color, ...props }) => {
   const { classes } = useStyles(color);
   return (
     <Button
@@ -18,13 +20,13 @@ const SmallButton: React.FC<ButtonProps> = ({ children, color, ...props }) => {
       p={0}
       classNames={{
         label: classes.label,
-        inner: classes.inner
+        inner: classes.inner,
       }}
       {...props}
     >
       {children}
     </Button>
   );
-}
+};
 
 export default SmallButton;

@@ -7,7 +7,9 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const PrimaryButton: React.FC<ButtonProps> = ({ children, ...props }) => {
+const PrimaryButton: React.FC<
+  import("@mantine/utils").PolymorphicComponentProps<"button", ButtonProps>
+> = ({ children, ...props }) => {
   const { classes } = useStyles();
   return (
     <Button
@@ -22,6 +24,6 @@ const PrimaryButton: React.FC<ButtonProps> = ({ children, ...props }) => {
       {children}
     </Button>
   );
-}
+};
 
 export default PrimaryButton;

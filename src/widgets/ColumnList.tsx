@@ -14,7 +14,7 @@ const useGetColumns = () => {
   }));
 };
 
-const MyColumns = () => {
+const ColumnList = () => {
   const columns = useGetColumns();
 
   return (
@@ -92,4 +92,4 @@ const Column: React.FC<ColumnProps> = (props) => {
   );
 };
 
-export default MyColumns;
+export default ColumnList;

@@ -8,7 +8,8 @@ const useStyles = createStyles((theme) => ({
     position: "fixed",
     backgroundColor: colors.dark[500],
     padding: `8px 160px`,
-    zIndex: 1
+    zIndex: 100,
+    boxShadow: '0px 3px 6px #00000029',
   },
 }));
 

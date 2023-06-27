@@ -6,7 +6,6 @@ import healthCareTheme from '@/theme';
 import { NavBar } from '@/components/NavBar';
 import { Challenge, Info, Logo, Memo, Menu } from '@/components/Icons';
 import { MenuItem } from '@/components/Header/MenuItem';
-import { notoSan } from './fonts';
 import ScrollToTop from '@/components/ScrollToTop';
 import { useRouter } from 'next/navigation';
 
@@ -33,7 +32,7 @@ export default function RootLayout({
         withNormalizeCSS
         theme={healthCareTheme}
       >
-        <body className={notoSan.className}>
+        <body>
           <Header />
           <main className={classes.main}>
             {children}

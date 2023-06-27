@@ -4,23 +4,36 @@ import Inter from "@/components/Text/Inter";
 import { colors } from "@/theme";
 import { Flex, createStyles } from "@mantine/core";
 
-const RecordCategories = () => {
+export enum RecordCategoryType {
+  BodyRecord = "BODY RECORD",
+  MyExercise = "MY EXERCISE",
+  MyDiary = "MY DIARY",
+}
+
+export interface RecordCategoriesProps {
+  onClick: (title: RecordCategoryType) => void;
+}
+
+const RecordCategories: React.FC<RecordCategoriesProps> = ({ onClick }) => {
   return (
     <Flex justify="center" align="stretch" gap={48}>
       <RecordCategory
         imgSrc="/my-recommend-1.png"
-        title="BODY RECORD"
+        title={RecordCategoryType.BodyRecord}
         content="自分のカラダの記録"
+        onClick={onClick}
       />
       <RecordCategory
         imgSrc="/my-recommend-2.png"
-        title="MY EXERCISE"
+        title={RecordCategoryType.MyExercise}
         content="自分の運動の記録"
+        onClick={onClick}
       />
       <RecordCategory
         imgSrc="/my-recommend-3.png"
-        title="MY DIARY"
+        title={RecordCategoryType.MyDiary}
         content="自分の日記"
+        onClick={onClick}
       />
     </Flex>
   );
@@ -36,14 +49,16 @@ const useRecordStyles = createStyles((theme) => ({
 
 interface RecordCategoryProps {
   imgSrc: string;
-  title: string;
+  title: RecordCategoryType;
   content: string;
+  onClick: (title: RecordCategoryType) => void;
 }
 
 const RecordCategory: React.FC<RecordCategoryProps> = ({
   imgSrc,
   title,
   content,
+  onClick,
 }) => {
   const { classes } = useRecordStyles();
 
@@ -63,7 +78,7 @@ const RecordCategory: React.FC<RecordCategoryProps> = ({
         <Inter fz={25} fw={400} color={colors.primary[300]}>
           {title}
         </Inter>
-        <SmallButton w={160} color={colors.primary[400]}>
+        <SmallButton w={160} color={colors.primary[400]} onClick={() => onClick(title)}>
           {content}
         </SmallButton>
       </Flex>

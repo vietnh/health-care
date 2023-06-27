@@ -1,8 +1,8 @@
 'use client';
-import { Box, Flex } from '@mantine/core'
-import { colors } from '@/theme';
+import { Flex } from '@mantine/core'
 import Archivement from '@/widgets/Archivement';
 import MealHistory from '@/widgets/MealHistory';
+import ContainerCard from '@/components/Card/ContainerCard';
 
 export default function Home() {
   return (
@@ -17,8 +17,7 @@ export default function Home() {
 }
 
 const BodyGraph = () => {
-  return <Box sx={{
-    backgroundColor: colors.dark[600]
-  }}>
-  </Box>
+  return <ContainerCard w={740} h={316}>
+
+  </ContainerCard>
 }

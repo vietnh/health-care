@@ -1,34 +1,48 @@
 import Image from 'next/image'
 
-export interface IconProps {
+const DEFAULT_ICON_SIZE = 32;
+
+interface BaseIconProps {
+  name: string;
   width?: number;
   height?: number;
+  onClick?: () => void;
 }
 
-export const Logo: React.FC<IconProps> = ({ width = 32, height = 32 }) => {
-  return <Image src='/logo.svg' alt="Logo Icon" width={width} height={height} />
+export interface IconProps extends Omit<BaseIconProps, 'name'> { }
+
+const BaseIcon = ({ name, width = DEFAULT_ICON_SIZE, height = DEFAULT_ICON_SIZE, ...others }: BaseIconProps) => {
+  return <Image src={`/${name}.svg`} alt={`${name} icon`} width={width} height={height} {...others} />
 }
 
-export const Memo: React.FC<IconProps> = ({ width = 32, height = 32 }) => {
-  return <Image src='/memo.svg' alt="Memo Icon" width={width} height={height} />
+export const Logo: React.FC<IconProps> = (props) => {
+  return <BaseIcon name='logo' {...props} />
 }
 
-export const Challenge: React.FC<IconProps> = ({ width = 32, height = 32 }) => {
-  return <Image src='/challenge.svg' alt="Challenge Icon" width={width} height={height} />
+export const Memo: React.FC<IconProps> = (props) => {
+  return <BaseIcon name='memo' {...props} />
 }
 
-export const Info: React.FC<IconProps> = ({ width = 32, height = 32 }) => {
-  return <Image src='/info.svg' alt="Info Icon" width={width} height={height} />
+export const Challenge: React.FC<IconProps> = (props) => {
+  return <BaseIcon name='challenge' {...props} />
 }
 
-export const Menu: React.FC<IconProps> = ({ width = 32, height = 32 }) => {
-  return <Image src='/menu.svg' alt="Menu Icon" width={width} height={height} />
+export const Info: React.FC<IconProps> = (props) => {
+  return <BaseIcon name='info' {...props} />
 }
 
-export const Knife: React.FC<IconProps> = ({ width = 32, height = 32 }) => {
-  return <Image src='/knife.svg' alt="Knife Icon" width={width} height={height} />
+export const Menu: React.FC<IconProps> = (props) => {
+  return <BaseIcon name='menu' {...props} />
 }
 
-export const Cup: React.FC<IconProps> = ({ width = 32, height = 32 }) => {
-  return <Image src='/cup.svg' alt="Cup Icon" width={width} height={height} />
+export const Knife: React.FC<IconProps> = (props) => {
+  return <BaseIcon name='knife' {...props} />
+}
+
+export const Cup: React.FC<IconProps> = (props) => {
+  return <BaseIcon name='cup' {...props} />
+}
+
+export const Scroll: React.FC<IconProps> = (props) => {
+  return <BaseIcon name='scroll' {...props} />
 }

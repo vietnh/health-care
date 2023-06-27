@@ -1,4 +1,5 @@
 import Hexagon from "@/components/Button/Hexagon";
+import PrimaryButton from "@/components/Button/Primary";
 import { Knife, Cup } from "@/components/Icons";
 import Inter from "@/components/Text/Inter";
 import { colors } from "@/theme";
@@ -7,7 +8,7 @@ import Image from 'next/image';
 
 const MealHistory: React.FC = () => {
   return (
-    <Flex direction='column' align='center' px={160}>
+    <Flex direction='column' align='center' px={160} pb={64}>
       <Filter />
       <Grid gutter={8} align='stretch' justify='center' w={960}>
         <Grid.Col span={3}><Image src='/m01.jpg' width={234} height={234} alt='m01' /></Grid.Col>
@@ -15,6 +16,9 @@ const MealHistory: React.FC = () => {
         <Grid.Col span={3}><Image src='/d01.jpg' width={234} height={234} alt='m01' /></Grid.Col>
         <Grid.Col span={3}><Image src='/l01.jpg' width={234} height={234} alt='m01' /></Grid.Col>
       </Grid>
+      <PrimaryButton w={288} mt={28}>
+        記録をもっと見る
+      </PrimaryButton>
     </Flex>
   );
 }

@@ -7,7 +7,8 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     position: "fixed",
     backgroundColor: colors.dark[500],
-    padding: `8px 160px`
+    padding: `8px 160px`,
+    zIndex: 1
   },
 }));
 

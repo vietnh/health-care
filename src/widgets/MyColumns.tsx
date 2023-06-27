@@ -1,34 +1,40 @@
+import PrimaryButton from "@/components/Button/Primary";
 import { ImageCard } from "@/components/Card/ImageCard";
 import Inter from "@/components/Text/Inter";
 import { colors } from "@/theme";
 import { Flex, SimpleGrid, Text } from "@mantine/core";
 
 const useGetColumns = () => {
-  return new Array(16).fill({
-    imgSrc: "/column-1.jpg",
+  return Array.from({ length: 8 }, (_, index) => ({
+    imgSrc: `/column-${index + 1}.jpg`,
     date: "2021.05.21",
     time: "23:25",
     content: "魚を食べて頭もカラダも元気に！知っておきたい魚を食べるメリ…",
     tags: ["#魚料理", "#和食", "#DHA"],
-  });
+  }));
 };
 
 const MyColumns = () => {
   const columns = useGetColumns();
 
   return (
-    <SimpleGrid cols={4} spacing={8} verticalSpacing={8}>
-      {columns.map((column, index) => (
-        <Column
-          imgSrc={column.imgSrc}
-          date={column.date}
-          time={column.time}
-          content={column.content}
-          tags={column.tags}
-          key={index}
-        />
-      ))}
-    </SimpleGrid>
+    <Flex direction="column" align="center">
+      <SimpleGrid cols={4} spacing={8} verticalSpacing={8}>
+        {columns.map((column, index) => (
+          <Column
+            imgSrc={column.imgSrc}
+            date={column.date}
+            time={column.time}
+            content={column.content}
+            tags={column.tags}
+            key={index}
+          />
+        ))}
+      </SimpleGrid>
+      <PrimaryButton w={288} mt={28}>
+        記録をもっと見る
+      </PrimaryButton>
+    </Flex>
   );
 };
 

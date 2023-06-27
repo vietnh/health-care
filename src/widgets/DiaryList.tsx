@@ -1,21 +1,13 @@
+import { Diary } from "@/app/api/diaries/route";
 import PrimaryButton from "@/components/Button/Primary";
 import InfoCard from "@/components/Card/InfoCard";
+import useFetch from "@/hooks/useFetch";
+import { formatDate } from "@/utils/date";
 import { Flex, Grid } from "@mantine/core";
 import { forwardRef } from "react";
 
-const useGetDiaries = () => {
-  return new Array(8).fill({
-    date: "2021.05.21",
-    time: "23:25",
-    contents: [
-      "私の日記の記録が一部表示されます。",
-      "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト…",
-    ],
-  });
-};
-
 const DiaryList = forwardRef<HTMLDivElement>((_, ref) => {
-  const diaries = useGetDiaries();
+  const diaries = useFetch<Diary[]>('/api/diaries', []);
 
   return (
     <Flex direction="column" align="center" px={160} pb={64} ref={ref}>
@@ -25,7 +17,10 @@ const DiaryList = forwardRef<HTMLDivElement>((_, ref) => {
             <InfoCard
               p={16}
               radius={0}
-              title={[diary.date, diary.time]}
+              title={[
+                formatDate(diary.date, "YYYY.MM.DD"),
+                formatDate(diary.date, "HH:mm"),
+              ]}
               content={diary.contents}
             />
           </Grid.Col>

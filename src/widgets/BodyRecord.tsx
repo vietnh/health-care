@@ -1,63 +1,16 @@
+import { Period } from "@/app/api/statistics/[period]/route";
+import Badge from "@/components/Badge";
 import ContainerCard from "@/components/Card/ContainerCard";
 import LineChart from "@/components/Chart/Line";
 import Inter from "@/components/Text/Inter";
-import { colors } from "@/theme";
+import useGetChartData from "@/hooks/useGetChartData";
 import { formatDate } from "@/utils/date";
-import { forwardRef } from "react";
-
-function getRandomXY(x?: number, y?: number) {
-  const randomX = x || Math.floor(Math.random() * 12) + 1; // Random number between 1 and 12
-  const randomY = y || Math.floor(Math.random() * 100) + 1; // Random number between 1 and 100
-
-  return {
-    x: randomX,
-    y: randomY,
-  };
-}
-
-const useGetRecordChartData = () => {
-  return [
-    {
-      id: "bodyWeight",
-      color: colors.primary[300],
-      data: [
-        getRandomXY(6),
-        getRandomXY(7),
-        getRandomXY(8),
-        getRandomXY(9),
-        getRandomXY(10),
-        getRandomXY(11),
-        getRandomXY(12),
-        getRandomXY(1),
-        getRandomXY(2),
-        getRandomXY(3),
-        getRandomXY(4),
-        getRandomXY(5),
-      ],
-    },
-    {
-      id: "bodyFat",
-      color: colors.secondary[300],
-      data: [
-        getRandomXY(6),
-        getRandomXY(7),
-        getRandomXY(8),
-        getRandomXY(9),
-        getRandomXY(10),
-        getRandomXY(11),
-        getRandomXY(12),
-        getRandomXY(1),
-        getRandomXY(2),
-        getRandomXY(3),
-        getRandomXY(4),
-        getRandomXY(5),
-      ],
-    },
-  ];
-};
+import { Box, Flex } from "@mantine/core";
+import { forwardRef, useState } from "react";
 
 const BodyRecord = forwardRef<HTMLDivElement>((_, ref) => {
-  const data = useGetRecordChartData();
+  const [period, setPeriod] = useState<Period>("month");
+  const data = useGetChartData(period);
 
   return (
     <ContainerCard
@@ -75,10 +28,35 @@ const BodyRecord = forwardRef<HTMLDivElement>((_, ref) => {
       ]}
       ref={ref}
     >
-      <LineChart
-        data={data}
-        margin={{ top: 5, right: 50, bottom: 87, left: 50 }}
-      />
+      <Box h="calc(100% - 60px)">
+        <LineChart
+          data={data}
+          period={period}
+          margin={{ top: 5, right: 50, bottom: 32, left: 23 }}
+        />
+      </Box>
+      <Flex gap={16}>
+        <Badge
+          label="日"
+          active={period === "day"}
+          onClick={() => setPeriod("day")}
+        />
+        <Badge
+          label="週"
+          active={period === "week"}
+          onClick={() => setPeriod("week")}
+        />
+        <Badge
+          label="月"
+          active={period === "month"}
+          onClick={() => setPeriod("month")}
+        />
+        <Badge
+          label="年"
+          active={period === "year"}
+          onClick={() => setPeriod("year")}
+        />
+      </Flex>
     </ContainerCard>
   );
 });

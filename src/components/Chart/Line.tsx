@@ -1,7 +1,19 @@
+import { Period } from "@/app/api/statistics/[period]/route";
 import { colors } from "@/theme";
 import { LineSvgProps, ResponsiveLine } from "@nivo/line";
+import { calculateGridXValues, formatXValue } from "./utils";
 
-const LineChart: React.FC<LineSvgProps> = ({ data, margin, ...others }) => (
+export interface LineChartProps extends LineSvgProps {
+  period: Period;
+}
+
+const LineChart: React.FC<LineChartProps> = ({
+  data,
+  margin,
+  period,
+  gridXValues,
+  ...others
+}) => (
   <ResponsiveLine
     data={data}
     colors={{ datum: "color" }}
@@ -14,12 +26,12 @@ const LineChart: React.FC<LineSvgProps> = ({ data, margin, ...others }) => (
       stacked: false,
       reverse: false,
     }}
-    gridXValues={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
+    gridXValues={gridXValues || calculateGridXValues(data)}
     axisBottom={{
       tickSize: 5,
       tickPadding: 4,
       tickRotation: 0,
-      format: (value: number) => `${value}月`,
+      format: (value: number) => formatXValue(value, period),
     }}
     axisLeft={null}
     enableGridY={false}

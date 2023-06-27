@@ -1,8 +1,7 @@
-import PrimaryButton from "@/components/Button/Primary";
-import InfoCard from "@/components/Card/InfoCard";
+import ScrollArea from "@/components/ScrollArea";
 import Inter from "@/components/Text/Inter";
 import { colors } from "@/theme";
-import { Card, Divider, Flex, Grid, Group, ScrollArea, SimpleGrid, Text } from "@mantine/core";
+import { Card, Divider, Flex, Group, SimpleGrid, Text } from "@mantine/core";
 
 const useGetExercises = () => {
   return new Array(16).fill({
@@ -25,8 +24,8 @@ const MyExercise: React.FC = () => {
         <Inter fz={22} sx={{ lineHeight: '27px' }}>2021.05.21</Inter>
       </Flex>
 
-      <ScrollArea h={250} type="auto" pr={24}>
-        <SimpleGrid cols={2}>
+      <ScrollArea h='calc(100% - 36px)'>
+        <SimpleGrid cols={2} spacing={40} verticalSpacing={8}>
           {exercises.map((exercise, index) => (
             <Flex direction='column' h={40} key={index}>
               <Group align='flex-start' spacing={3}>

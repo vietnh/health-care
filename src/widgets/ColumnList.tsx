@@ -2,13 +2,14 @@ import { Column } from "@/app/api/columns/route";
 import PrimaryButton from "@/components/Button/Primary";
 import { ImageCard } from "@/components/Card/ImageCard";
 import Inter from "@/components/Text/Inter";
-import useFetchList from "@/hooks/useFetchList";
+import useFetchWithPagination from "@/hooks/useFetchWithPagination";
 import { colors } from "@/theme";
 import { formatDate } from "@/utils/date";
 import { Flex, SimpleGrid, Text } from "@mantine/core";
 
 const ColumnList = () => {
-  const { data: columns, fetch } = useFetchList<Column>("/api/columns");
+  const { data: columns, fetch } =
+    useFetchWithPagination<Column>("/api/columns");
 
   return (
     <Flex direction="column" align="center">

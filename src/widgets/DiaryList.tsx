@@ -1,13 +1,14 @@
 import { Diary } from "@/app/api/diaries/route";
 import PrimaryButton from "@/components/Button/Primary";
 import InfoCard from "@/components/Card/InfoCard";
-import useFetchList from "@/hooks/useFetchList";
+import useFetchWithPagination from "@/hooks/useFetchWithPagination";
 import { formatDate } from "@/utils/date";
 import { Flex, Grid } from "@mantine/core";
 import { forwardRef } from "react";
 
 const DiaryList = forwardRef<HTMLDivElement>((_, ref) => {
-  const { data: diaries, fetch } = useFetchList<Diary>("/api/diaries");
+  const { data: diaries, fetch } =
+    useFetchWithPagination<Diary>("/api/diaries");
 
   return (
     <Flex direction="column" align="center" px={160} pb={64} ref={ref}>

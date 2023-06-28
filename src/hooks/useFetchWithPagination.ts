@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetcher } from "./utils";
 
-const useFetchList = <T>(
+const useFetchWithPagination = <T>(
   url: string,
   params: Record<string, string> = {},
   initialValue: T[] = []
@@ -31,4 +31,4 @@ const useFetchList = <T>(
   return { data, fetch };
 };
 
-export default useFetchList;
+export default useFetchWithPagination;

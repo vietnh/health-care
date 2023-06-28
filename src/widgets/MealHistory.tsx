@@ -4,7 +4,7 @@ import PrimaryButton from "@/components/Button/Primary";
 import { ImageCard } from "@/components/Card/ImageCard";
 import { Knife, Cup } from "@/components/Icons";
 import Inter from "@/components/Text/Inter";
-import useFetchList from "@/hooks/useFetchList";
+import useFetchWithPagination from "@/hooks/useFetchWithPagination";
 import { colors } from "@/theme";
 import { formatDate } from "@/utils/date";
 import { Flex, Grid } from "@mantine/core";
@@ -13,7 +13,7 @@ import { useState } from "react";
 
 const MealHistory: React.FC = () => {
   const [mealType, setMealType] = useState<MealType | null>(null);
-  const { data: mealHistories, fetch } = useFetchList<MealHistory>(
+  const { data: mealHistories, fetch } = useFetchWithPagination<MealHistory>(
     "/api/meal-histories"
   );
 

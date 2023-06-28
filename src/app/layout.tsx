@@ -69,7 +69,7 @@ const Header: React.FC = () => {
               </Box>
             }
             items={[
-              { label: "自分の記録", onClick: () => router.push("/") },
+              { label: "自分の記録", onClick: () => router.push("/my-record") },
               { label: "体重グラフ" },
               { label: "目標" },
               { label: "選択中のコース" },

@@ -1,17 +1,13 @@
 "use client";
 
-import {
-  Flex,
-  Text,
-  MantineProvider,
-  createStyles,
-} from "@mantine/core";
+import { Flex, Text, MantineProvider, createStyles, Box } from "@mantine/core";
 import healthCareTheme from "@/theme";
 import { NavBar } from "@/components/NavBar";
 import { Challenge, Info, Logo, Memo, Menu } from "@/components/Icons";
 import { MenuItem } from "@/components/Header/MenuItem";
 import ScrollToTop from "@/components/ScrollToTop";
 import { useRouter } from "next/navigation";
+import ContextMenu from "@/components/ContextMenu";
 
 const useStyles = createStyles((theme) => ({
   main: {
@@ -65,7 +61,23 @@ const Header: React.FC = () => {
           />
           <MenuItem icon={<Challenge />} text="チャレンジ" />
           <MenuItem icon={<Info />} text="お知らせ" />
-          <Menu />
+          <ContextMenu
+            width={280}
+            target={
+              <Box>
+                <Menu />
+              </Box>
+            }
+            items={[
+              { label: "自分の記録", onClick: () => router.push("/") },
+              { label: "体重グラフ" },
+              { label: "目標" },
+              { label: "選択中のコース" },
+              { label: "コラム一覧", onClick: () => router.push("/column") },
+              { label: "設定" },
+            ]}
+            position="bottom-end"
+          />
         </Flex>
       }
     />

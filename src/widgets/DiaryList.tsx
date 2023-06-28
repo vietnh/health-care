@@ -1,6 +1,7 @@
 import { Diary } from "@/app/api/diaries/route";
 import PrimaryButton from "@/components/Button/Primary";
 import InfoCard from "@/components/Card/InfoCard";
+import Inter from "@/components/Text/Inter";
 import useFetchWithPagination from "@/hooks/useFetchWithPagination";
 import { formatDate } from "@/utils/date";
 import { Flex, Grid } from "@mantine/core";
@@ -12,6 +13,9 @@ const DiaryList = forwardRef<HTMLDivElement>((_, ref) => {
 
   return (
     <Flex direction="column" align="center" px={160} pb={64} ref={ref}>
+      <Inter fz={22} fw={400} sx={{ alignSelf: 'flex-start' }}>
+        MY DIARY
+      </Inter>
       <Grid gutter={12} align="stretch" justify="center" w={960}>
         {diaries.map((diary, index) => (
           <Grid.Col span={3} key={index}>

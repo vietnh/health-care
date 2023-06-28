@@ -7,7 +7,7 @@ import MainRecord from '@/widgets/MainRecord';
 export default function Home() {
   return (
     <>
-      <Flex>
+      <Flex justify='center'>
         <Archivement />
         <MainRecord />
       </Flex>

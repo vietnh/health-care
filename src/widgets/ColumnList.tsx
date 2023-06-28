@@ -13,7 +13,7 @@ const ColumnList = () => {
 
   return (
     <Flex direction="column" align="center">
-      <SimpleGrid cols={4} spacing={8} verticalSpacing={8}>
+      <SimpleGrid cols={4} spacing={8} verticalSpacing={8} w={960}>
         {columns.map((column, index) => (
           <Column
             imgSrc={column.imgSrc}

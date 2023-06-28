@@ -1,28 +1,32 @@
+"use client";
 
-'use client';
-
-import { Flex, Text, MantineProvider, createStyles, Box, Button, Affix, rem } from '@mantine/core'
-import healthCareTheme from '@/theme';
-import { NavBar } from '@/components/NavBar';
-import { Challenge, Info, Logo, Memo, Menu } from '@/components/Icons';
-import { MenuItem } from '@/components/Header/MenuItem';
-import ScrollToTop from '@/components/ScrollToTop';
-import { useRouter } from 'next/navigation';
+import {
+  Flex,
+  Text,
+  MantineProvider,
+  createStyles,
+} from "@mantine/core";
+import healthCareTheme from "@/theme";
+import { NavBar } from "@/components/NavBar";
+import { Challenge, Info, Logo, Memo, Menu } from "@/components/Icons";
+import { MenuItem } from "@/components/Header/MenuItem";
+import ScrollToTop from "@/components/ScrollToTop";
+import { useRouter } from "next/navigation";
 
 const useStyles = createStyles((theme) => ({
   main: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
     paddingTop: 64,
     paddingBottom: 128,
-    minHeight: '100vh',
-  }
-}))
+    minHeight: "100vh",
+  },
+}));
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   const { classes } = useStyles();
   return (
@@ -34,15 +38,13 @@ export default function RootLayout({
       >
         <body>
           <Header />
-          <main className={classes.main}>
-            {children}
-          </main>
+          <main className={classes.main}>{children}</main>
           <Footer />
           <ScrollToTop position={{ bottom: 144, right: 96 }} />
         </body>
       </MantineProvider>
     </html>
-  )
+  );
 }
 
 const Header: React.FC = () => {
@@ -51,21 +53,31 @@ const Header: React.FC = () => {
   return (
     <NavBar
       h={64}
-      leftContent={<Logo />}
+      leftContent={
+        <Logo width={109} height={40} onClick={() => router.push("/")} />
+      }
       rightContent={
-        <Flex align='center' gap={16}>
-          <MenuItem icon={<Memo />} text='自分の記録' onClick={() => router.push('/my-record')} />
-          <MenuItem icon={<Challenge />} text='チャレンジ' />
-          <MenuItem icon={<Info />} text='お知らせ' />
+        <Flex align="center" gap={16}>
+          <MenuItem
+            icon={<Memo />}
+            text="自分の記録"
+            onClick={() => router.push("/my-record")}
+          />
+          <MenuItem icon={<Challenge />} text="チャレンジ" />
+          <MenuItem icon={<Info />} text="お知らせ" />
           <Menu />
         </Flex>
       }
     />
-  )
+  );
 };
 
 const Footer: React.FC = () => {
-  const FooterText = ({ children }: React.PropsWithChildren) => (<Text fz={11} color='white'>{children}</Text>);
+  const FooterText = ({ children }: React.PropsWithChildren) => (
+    <Text fz={11} color="white">
+      {children}
+    </Text>
+  );
 
   return (
     <NavBar
@@ -79,7 +91,8 @@ const Footer: React.FC = () => {
           <FooterText>個人情報の取扱について</FooterText>
           <FooterText>特定商取引法に基づく表記</FooterText>
           <FooterText>お問い合わせ</FooterText>
-        </Flex>}
+        </Flex>
+      }
     />
-  )
+  );
 };

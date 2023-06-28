@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { paginate } from "../utils";
 
 export interface Column {
   imgSrc: string;
@@ -15,5 +16,6 @@ const mockData = Array.from({ length: 100 }).map<Column>((_, i) => ({
 }));
 
 export async function GET(req: Request) {
-  return NextResponse.json(mockData);
+  const { searchParams } = new URL(req.url);
+  return NextResponse.json(paginate(mockData, searchParams));
 }

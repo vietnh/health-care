@@ -2,13 +2,13 @@ import { Column } from "@/app/api/columns/route";
 import PrimaryButton from "@/components/Button/Primary";
 import { ImageCard } from "@/components/Card/ImageCard";
 import Inter from "@/components/Text/Inter";
-import useFetch from "@/hooks/useFetch";
+import useFetchList from "@/hooks/useFetchList";
 import { colors } from "@/theme";
 import { formatDate } from "@/utils/date";
 import { Flex, SimpleGrid, Text } from "@mantine/core";
 
 const ColumnList = () => {
-  const columns = useFetch<Column[]>('/api/columns', []);
+  const { data: columns, fetch } = useFetchList<Column>("/api/columns");
 
   return (
     <Flex direction="column" align="center">
@@ -24,7 +24,7 @@ const ColumnList = () => {
           />
         ))}
       </SimpleGrid>
-      <PrimaryButton w={288} mt={28}>
+      <PrimaryButton w={288} mt={28} onClick={() => fetch(undefined, true)}>
         記録をもっと見る
       </PrimaryButton>
     </Flex>

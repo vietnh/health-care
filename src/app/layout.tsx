@@ -3,11 +3,20 @@
 import { Flex, Text, MantineProvider, createStyles, Box } from "@mantine/core";
 import healthCareTheme from "@/theme";
 import { NavBar } from "@/components/NavBar";
-import { Challenge, Info, Logo, Memo, Menu } from "@/components/Icons";
+import {
+  Challenge,
+  Circle,
+  IconWithNotification,
+  Info,
+  Logo,
+  Memo,
+  Menu,
+} from "@/components/Icons";
 import { MenuItem } from "@/components/Header/MenuItem";
 import ScrollToTop from "@/components/ScrollToTop";
 import { useRouter } from "next/navigation";
 import ContextMenu from "@/components/ContextMenu";
+import Inter from "@/components/Text/Inter";
 
 const useStyles = createStyles((theme) => ({
   main: {
@@ -60,7 +69,12 @@ const Header: React.FC = () => {
             onClick={() => router.push("/my-record")}
           />
           <MenuItem icon={<Challenge />} text="チャレンジ" />
-          <MenuItem icon={<Info />} text="お知らせ" />
+          <MenuItem
+            icon={
+              <IconWithNotification icon={<Info />} notificationCount={1} />
+            }
+            text="お知らせ"
+          />
           <ContextMenu
             width={280}
             target={

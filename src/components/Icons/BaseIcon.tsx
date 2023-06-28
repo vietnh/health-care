@@ -7,6 +7,7 @@ interface BaseIconProps {
   width?: number;
   height?: number;
   onClick?: () => void;
+  style?: React.CSSProperties;
 }
 
 export interface IconProps extends Omit<BaseIconProps, "name"> {}

@@ -6,3 +6,5 @@ export * from './Menu';
 export * from './Knife';
 export * from './Cup';
 export * from './Scroll';
+export * from './Circle';
+export * from './IconWithNotification';
